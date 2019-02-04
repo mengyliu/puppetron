@@ -1,6 +1,7 @@
 const fs = require('fs');
 const http = require('http');
 const { URL } = require('url');
+const express = require('express');
 const { DEBUG, HEADFUL, CHROME_BIN, PORT } = process.env;
 
 const puppeteer = require('puppeteer');
@@ -29,6 +30,7 @@ const blockedRegExp = new RegExp('(' + blocked.join('|') + ')', 'i');
 
 const truncate = (str, len) => str.length > len ? str.slice(0, len) + '…' : str;
 
+var app = express();
 let browser;
 
 require('http').createServer(async (req, res) => {
